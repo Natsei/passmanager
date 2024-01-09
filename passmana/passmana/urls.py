@@ -1,9 +1,8 @@
 from django.contrib import admin
-from django.urls import include, path
-from django.shortcuts import redirect
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('gestionnaire/', include('gestionnaire.urls')),
-    path('', lambda request: redirect('sites/', permanent=False)),
+    # Vous pouvez ajouter d'autres chemins globaux ici
 ]

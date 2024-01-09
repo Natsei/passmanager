@@ -1,0 +1,11 @@
+{% extends "gestionnaire/base.html" %}
+
+{% block content %}
+<h2>Liste des Sites</h2>
+<ul>
+    {% for site in sites %}
+    <li>{{ site.nom }} - <a href="{% url 'modifier_site' site.id %}">Modifier</a> | <a href="{% url 'supprimer_site' site.id %}">Supprimer</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'ajouter_site' %}">Ajouter un nouveau site</a>
+{% endblock %}
