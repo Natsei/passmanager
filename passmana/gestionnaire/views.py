@@ -1,8 +1,24 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import SiteForm
 from .models import Site
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
 
-# Vue pour ajouter un nouveau site
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('liste_sites')
+        else:
+            return render(request, 'gestionnaire/login.html', {'error': 'Invalid credentials'})
+    return render(request, 'gestionnaire/login.html')
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
 def ajouter_site(request):
     if request.method == "POST":
         form = SiteForm(request.POST)
