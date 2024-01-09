@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Sites</title>
+</head>
+<body>
+    <h1>Liste des Sites</h1>
+    <ul>
+        {% for site in sites %}
+        <li>{{ site.nom }} - {{ site.url }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
